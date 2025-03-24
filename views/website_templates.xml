@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+<template id="layout" name="Main layout" inherit_id="website.layout">
+    <xpath expr="//link[@href='https://fonts.gstatic.com/']" position="replace">
+    </xpath>
+</template>
+
+</odoo>
