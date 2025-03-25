@@ -8,7 +8,7 @@ from odoo.addons.web.controllers.binary import Binary, ANY_UNIQUE
 
 import requests
 
-from ..constants import GSTATIC_BASE_URL, FONT_GOOGLE_APIS_URL, GOOGLE_FONTS_PATH, GOOGLE_FONT_STYLESHEETS_PATH
+from ..config import GOOGLE_FONTS_PATH, GOOGLE_FONT_STYLESHEETS_PATH
 from ..google_font_stylesheet_processing import process_google_font_stylesheet
 
 
@@ -22,12 +22,17 @@ def generator_file_stream(filepath, chunk_size=4096):
 
 
 class LocalGoogleFontsWebClient(Binary):
-    def _get_or_download_static_file(self, file_path, url, url_query_params=None, text_replacer=None, is_text=True):
+    def _get_or_download_static_file(
+        self, file_path, url, url_query_params=None, text_replacer=None, is_text=True
+    ):
         if not os.path.isfile(file_path):
             try:
                 res = requests.get(url, params=url_query_params)
                 res.raise_for_status()
-            except (requests.exceptions.ConnectionError, requests.exceptions.RequestException) as e:
+            except (
+                requests.exceptions.ConnectionError,
+                requests.exceptions.RequestException,
+            ) as e:
                 url = e.request.url
                 _logger.info("Error downloading url: %s", url)
                 return
@@ -60,19 +65,34 @@ class LocalGoogleFontsWebClient(Binary):
         if content is None:
             raise request.not_found()
         else:
-            response = http.Response(content, 200, content_type=content_type, headers=headers)
+            response = http.Response(
+                content, 200, content_type=content_type, headers=headers
+            )
             return response
 
-    @http.route('/css/font/google', type="http", auth='public')
+    @http.route(
+        "/css/font/google", type="http", auth="public", website=True, sitemap=False
+    )
     def load_google_font(self, **kw):
-        file_path = os.path.join(GOOGLE_FONT_STYLESHEETS_PATH, kw["family"])
+        family = kw["family"]
+        file_path = os.path.join(GOOGLE_FONT_STYLESHEETS_PATH, family)
 
-        family = kw.pop("family")
-        url = FONT_GOOGLE_APIS_URL + "?family=" + family
-        return self._return_cached_static_file(file_path=file_path, url=url, url_query_params=kw, text_replacer=process_google_font_stylesheet, content_type="text/css")
+        url = "https://fonts.googleapis.com/css"
+        return self._return_cached_static_file(
+            file_path=file_path,
+            url=url,
+            url_query_params=kw,
+            text_replacer=process_google_font_stylesheet,
+            content_type="text/css",
+        )
 
-    # website=True?
-    @http.route('/css/font/gstatic/<path:font_subpath>', type="http", auth='public')
+    @http.route(
+        "/css/font/gstatic/<path:font_subpath>",
+        type="http",
+        auth="public",
+        website=True,
+        sitemap=False,
+    )
     def load_gstatic(self, font_subpath, **kw):
         filename = os.path.basename(font_subpath)
         file_path = os.path.join(GOOGLE_FONTS_PATH, font_subpath)
@@ -88,6 +108,13 @@ class LocalGoogleFontsWebClient(Binary):
         else:
             content_type = "application/octet-stream"
 
-        url = GSTATIC_BASE_URL + font_subpath
+        url = "https://fonts.gstatic.com/" + font_subpath
 
-        return self._return_cached_static_file(file_path=file_path, content_type=content_type, is_text=False, headers={'Content-Disposition': f'inline: filename="{filename}"'}, url=url, url_query_params=kw)
+        return self._return_cached_static_file(
+            file_path=file_path,
+            content_type=content_type,
+            is_text=False,
+            headers={"Content-Disposition": f'inline: filename="{filename}"'},
+            url=url,
+            url_query_params=kw,
+        )

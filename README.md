@@ -11,11 +11,14 @@ At the same time, not having the computer connected to the Internet has some adv
 ## Configuration
 It's possible to configure the directories used to store the google font files and stylesheets using environment variables:
 
-- `LOCAL_GOOGLE_FONTS_CACHE_DIR_PATH`: Path to directory used for storing locally the data for this module (google font stylesheets and font files). By default, it's the directory `google_fonts` in odoo data directory. (`data_dir` config parameter).
+- `ODOO_LOCAL_GOOGLE_FONTS_CACHE_DIR_PATH`
+Path to directory used for storing locally the data for this module (google font stylesheets and font files). By default, it's the directory `google_fonts` in odoo data directory. (`data_dir` config parameter).
 
-- `GOOGLE_FONT_STYLESHEETS_PATH`: Path to the directory for storing the google font stylesheets. By default, it's the same value than `LOCAL_GOOGLE_FONTS_CACHE_DIR_PATH`.
+- `ODOO_GOOGLE_FONT_STYLESHEETS_PATH`
+Path to the directory for storing the google font stylesheets. By default, it's the same value than `LOCAL_GOOGLE_FONTS_CACHE_DIR_PATH`.
 
-- `GOOGLE_FONTS_PATH`: Path to the directory for storing the font files. By default, it's the subdirectory `gstatic` in `LOCAL_GOOGLE_FONTS_CACHE_DIR_PATH`.
+- `ODOO_GOOGLE_FONTS_PATH`
+Path to the directory for storing the font files. By default, it's the subdirectory `gstatic` in `ODOO_LOCAL_GOOGLE_FONTS_CACHE_DIR_PATH`.
 
 ## How does it work?
 The module adds a button in a new section called `Local Google Fonts` in the General settings. Clicking the button the module deletes some attachments in the database like stylesheet bundles containing URL's to stylesheet with declarations for google fonts. The next time that the bundle is regenerated, the content's bundle will have the links to google fonts pointing to local resources. The font files referenced in the google font stylesheet are also extracted and downloaded and the links to external resources are replaced to links pointing to the cached ones.
