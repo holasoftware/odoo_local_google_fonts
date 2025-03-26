@@ -27,7 +27,7 @@ Path to the directory for storing the font files. By default, it's the subdirect
 
 - `ODOO_DONT_DOWNLOAD_GOOGLE_FONTS_ON_MODULE_INSTALL`
 
-If the value of this environment variable is `1`, the module doesn't host the google fonts on install. It will be required to install manually in the settings section from the superuser.
+If the value of this environment variable is `1`, the module doesn't host the google fonts when installed. It will be required to install manually in the settings section.
 
 
 ## How does it work?
