@@ -6,5 +6,6 @@
     "version": "0.1",
     "depends": ["web"],
     "data": ["views/website_templates.xml", "views/res_config_settings_views.xml"],
+    "post_init_hook": "post_init",
     "license": "Other OSI approved licence",
 }

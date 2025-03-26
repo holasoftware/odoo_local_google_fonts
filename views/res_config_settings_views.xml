@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-    <record id="view_res_config_settings_no_google_font_form" model="ir.ui.view">
-        <field name="name">res.config.settings.view.form.inherit.ir_attachment_no_google_font</field>
+    <record id="view_res_config_settings_local_google_fonts_form" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit.ir_attachment_local_google_font</field>
         <field name="model">res.config.settings</field>
         <field name="inherit_id" ref="base.res_config_settings_view_form"/>
         <field name="priority" eval="10"/>
         <field name="arch" type="xml">
             <xpath expr="//app[@name='general_settings']//widget[@name='res_config_dev_tool']" position="before">
                 <div id="local_google_fonts">
-                    <block title="Local Google Fonts" name="no_google_fonts_setting_container">
-                        <setting id="no_google_fonts_setting">
+                    <block title="Local Google Fonts" name="local_google_fonts_setting_container">
+                        <setting id="local_google_fonts_setting">
                             <div class="content-group">
-                                <p>Delete attachments with google fonts. After deletion, attachments will be regenerated when necessary without using google fonts. Also the default google fonts used in odoo will be downloaded and stored in odoo data directory.</p> 
-                                <button name="action_delete_ir_attachments_containing_google_fonts" type="object" string="Proceed" class="btn btn-success"/>
+                                <p>Delete attachments with google fonts. After deletion, attachments will be regenerated when necessary without using google fonts. Also the default google fonts used in odoo will be downloaded and stored in the odoo data directory.</p> 
+                                <button name="action_local_google_fonts_init" type="object" string="Proceed" class="btn btn-success"/>
                             </div>
                         </setting>
                     </block>
