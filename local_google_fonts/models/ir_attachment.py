@@ -10,7 +10,7 @@ class IrAttachment(models.Model):
         values = super()._postprocess_contents(values)
 
         if (
-            values["name"] in IR_ATTACHMENT_NAMES_WITH_GOOGLE_FONTS
+            "name" in values and values["name"] in IR_ATTACHMENT_NAMES_WITH_GOOGLE_FONTS
         ):  # TODO: Add optionally other attachment names in the settings or as an env variable. Another option is to check the mimetype and to do the replacement in all stylesheets (?): and values['mimetype'] == 'text/css':
             values["raw"] = (
                 values["raw"]
