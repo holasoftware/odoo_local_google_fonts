@@ -10,8 +10,19 @@ It also allows local development without internet connection. Some odoo modules 
 
 At the same time, not having the computer connected to the Internet has some advantages such as being less exposed to cybersecurity risks and also saving internet data.
 
-## Configuration
-It's possible to configure the directories used to store the google font files and stylesheets using environment variables:
+
+## How does it work?
+After installation, the application starts downloading the default google fonts used in odoo and defined here:
+```
+    addons/website/static/src/scss/primary_variables.scss
+```
+It also deletes some attachments in the database like stylesheet bundles containing URL's to stylesheet with declarations for google fonts. The next time the bundle is regenerated, the content's bundle will have the links to google fonts pointing to local resources. The font files referenced in the google font stylesheet are also extracted and downloaded and the links to external resources are replaced to links pointing to the cached ones. The download process is executed in a python thread.
+
+The module also adds a button in a new section called `Local Google Fonts` in the General settings only available for the admin. Clicking the button, the module runs the same process as when it was installed. It helps to download again google fonts not yet cached (because there was no internet connection during installation and it was not possible to download the fonts for example) or deleted manually and to regenerate the attachments containing google fonts with all the replacement links.
+
+
+## Environment variables
+These are the environment variables that can be used for configuration:
 
 - `ODOO_LOCAL_GOOGLE_FONTS_CACHE_DIR_PATH`
 
@@ -28,13 +39,3 @@ Path to the directory for storing the font files. By default, it's the subdirect
 - `ODOO_DONT_DOWNLOAD_GOOGLE_FONTS_ON_MODULE_INSTALL`
 
 If the value of this environment variable is `1`, the module doesn't host the google fonts when installed. It will be required to install manually in the settings section.
-
-
-## How does it work?
-After installation, the application starts downloading the default google fonts used in odoo and defined here:
-```
-    addons/website/static/src/scss/primary_variables.scss
-```
-It also deletes some attachments in the database like stylesheet bundles containing URL's to stylesheet with declarations for google fonts. The next time the bundle is regenerated, the content's bundle will have the links to google fonts pointing to local resources. The font files referenced in the google font stylesheet are also extracted and downloaded and the links to external resources are replaced to links pointing to the cached ones. The download process is executed in a python thread.
-
-The module also adds a button in a new section called `Local Google Fonts` in the General settings only available for the admin. Clicking the button, the module runs the same process as when it was installed. It helps to download again google fonts not yet cached (because there was no internet connection during installation and it was not possible to download the fonts for example) or deleted manually and to regenerate the attachments containing google fonts with all the replacement links.
