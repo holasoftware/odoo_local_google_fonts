@@ -5,6 +5,7 @@
     "description": "Host google fonts and serve them from your own odoo instance.",
     "version": "0.1",
     "depends": ["web"],
+    "website": "https://github.com/holasoftware/odoo_local_google_fonts",
     "images": ["static/description/main_screenshot.png"],
     "data": ["views/website_templates.xml", "views/res_config_settings_views.xml"],
     "post_init_hook": "post_init",
