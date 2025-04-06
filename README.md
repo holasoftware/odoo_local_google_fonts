@@ -6,7 +6,7 @@ Supported odoo version: 18
 ## Rationale
 Serving cached google fonts improves privacy. For European citizens, hosting the google fonts locally doesn't require user consent for being GDPR compliant.
 
-It also allows local development without internet connection. Some odoo modules like the website module requires to load some google fonts by default to function properly, otherwise there is an error loading the website editor because it couldn't load without errors the stylesheet.
+It also allows local development without internet connection. Some odoo modules like the website module requires to load some google fonts by default to function properly, otherwise it shows an error popup because it couldn't load the imported stylesheets containing the google fonts declarations.
 
 At the same time, not having the computer connected to the Internet has some advantages such as being less exposed to cybersecurity risks and also saving internet data.
 

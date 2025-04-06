@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 300">
+  <!-- Background gradient -->
+  <defs>
+    <linearGradient id="bg-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f8f9fa" />
+      <stop offset="100%" stop-color="#e9ecef" />
+    </linearGradient>
+    
+    <!-- Shield clipPath -->
+    <clipPath id="shield-clip">
+      <path d="M190,80 L190,140 C190,180 150,200 150,200 C150,200 110,180 110,140 L110,80 Z" />
+    </clipPath>
+  </defs>
+  
+  <!-- Main background -->
+  <rect width="800" height="300" fill="url(#bg-gradient)" />
+  
+  <!-- Decorative background elements - privacy pattern -->
+  <g opacity="0.07">
+    <path d="M0,150 L800,150" stroke="#4285f4" stroke-width="1" />
+    <path d="M0,180 L800,180" stroke="#4285f4" stroke-width="1" />
+    <path d="M0,210 L800,210" stroke="#4285f4" stroke-width="1" />
+    <path d="M0,240 L800,240" stroke="#4285f4" stroke-width="1" />
+    
+    <path d="M200,0 L200,300" stroke="#4285f4" stroke-width="1" />
+    <path d="M400,0 L400,300" stroke="#4285f4" stroke-width="1" />
+    <path d="M600,0 L600,300" stroke="#4285f4" stroke-width="1" />
+  </g>
+  
+  
+  <!-- Document with checkmark representing compliance -->
+  <g transform="translate(400, 100)">
+    <rect x="0" y="0" width="70" height="90" fill="#ffffff" stroke="#0d47a1" stroke-width="2" rx="3" />
+    
+    <!-- Document lines -->
+    <line x1="10" y1="15" x2="60" y2="15" stroke="#4285f4" stroke-width="2" />
+    <line x1="10" y1="30" x2="60" y2="30" stroke="#4285f4" stroke-width="2" />
+    <line x1="10" y1="45" x2="40" y2="45" stroke="#4285f4" stroke-width="2" />
+    
+    <!-- Checkmark circle -->
+    <circle cx="35" cy="65" r="15" fill="#0F9D58" />
+    
+    <!-- Checkmark -->
+    <path d="M27,65 L33,71 L43,59" stroke="#ffffff" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+  </g>
+  
+  <!-- Text elements -->
+  <g font-family="Arial, sans-serif">
+    <!-- Title -->
+    <text x="400" y="50" font-size="28" font-weight="bold" text-anchor="middle" fill="#202124">Local Google Fonts</text>
+    
+    <!-- Subtitle -->
+    <text x="400" y="80" font-size="16" text-anchor="middle" fill="#5f6368">Privacy-Compliant Typography</text>
+    
+    <!-- Keywords -->
+    <g font-size="14" fill="#5f6368">
+      <text x="270" y="240" text-anchor="middle">GDPR</text>
+      <text x="350" y="240" text-anchor="middle">CCPA</text>
+      <text x="430" y="240" text-anchor="middle">ePrivacy</text>
+      <text x="520" y="240" text-anchor="middle">Data Protection</text>
+    </g>
+  </g>
+  
+  <!-- Font samples with privacy-focused design -->
+  <g transform="translate(300, 130)">
+    <!-- Font example 1 - Secure -->
+    <text x="0" y="0" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#EA4335">S</text>
+    <text x="12" y="0" font-family="Arial, sans-serif" font-size="16" fill="#5f6368">ecure</text>
+    
+    <!-- Font example 2 - Protected -->
+    <text x="0" y="25" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#FBBC05">P</text>
+    <text x="12" y="25" font-family="Arial, sans-serif" font-size="16" fill="#5f6368">rotected</text>
+    
+    <!-- Font example 3 - Compliant -->
+    <text x="0" y="50" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#4285F4">C</text>
+    <text x="12" y="50" font-family="Arial, sans-serif" font-size="16" fill="#5f6368">ompliant</text>
+    
+    <!-- Font example 4 - Transparent -->
+    <text x="0" y="75" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#0F9D58">T</text>
+    <text x="12" y="75" font-family="Arial, sans-serif" font-size="16" fill="#5f6368">ransparent</text>
+  </g>
+  
+  <!-- Removed "Regulation-Ready" badge -->
+</svg>
